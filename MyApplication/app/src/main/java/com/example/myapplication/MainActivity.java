@@ -5,9 +5,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -73,24 +76,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         f  = (FrameLayout) findViewById(R.id.mylayout);
-        final MouseView mv = new MouseView(MainActivity.this);
-        mv.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                mv.bitmapX = event.getX() - 150;
-                mv.bitmapY = event.getY() - 150;
-                mv.invalidate();
-                return true;
-            }
-        });
-        f.addView(mv);
+        TextView t = (TextView) findViewById(R.id.autoLinkTv);
+//        final MouseView mv = new MouseView(MainActivity.this);
+//        mv.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                mv.bitmapX = event.getX() - 150;
+//                mv.bitmapY = event.getY() - 150;
+//                mv.invalidate();
+//                return true;
+//            }
+//        });
+//        f.addView(mv);
+        t.setAutoLinkMask(Linkify.ALL);
+        t.setMovementMethod(LinkMovementMethod.getInstance());
 
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.sendEmptyMessage(0x123);
-            }
-        },0,170);
+//        new Timer().schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                handler.sendEmptyMessage(0x123);
+//            }
+//        },0,170);
 
     }
 }

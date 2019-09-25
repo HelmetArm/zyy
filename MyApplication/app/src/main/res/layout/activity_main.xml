@@ -41,11 +41,11 @@
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content">
 			<TextView
+				android:id="@+id/autoLinkTv"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="www.baidu.com"
-				android:textColor="@color/colorPrimaryDark"
-				android:autoLink="web"
+				android:text="597250712@qq.com"
+                android:autoLink="all"
 				android:layout_centerInParent="true"/>
 		</RelativeLayout>
 	</FrameLayout>
